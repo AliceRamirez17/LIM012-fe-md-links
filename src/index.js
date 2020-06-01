@@ -15,6 +15,7 @@ const relPath = './carpeta/data.md';
 
 const dirPath = './carpeta';
 const filePath = './carpeta/data.md';
+const anotherPath = './carpeta/data.txt';
 
 // Encontrar una ruta en específico
 const fileExists = fs.existsSync('./carpeta');
@@ -50,5 +51,28 @@ const recursion = (onePath) => {
     }
   });
 };
-
 recursion(dirPath);
+
+// Verificar la extensión .md
+const verifyExt = () => {
+  const baseName = path.basename(filePath);
+  if (path.extname(baseName) === '.md') {
+    console.log('path is a .md file');
+  } else {
+    console.log('path is not a .md file');
+  }
+};
+
+verifyExt();
+
+const pathAbs = path.resolve(filePath);
+console.log(pathAbs);
+
+// // Leer data de un file
+// fs.readlink(pathAbs, (err, linkString) => {
+//   if (err) {
+//     console.log(err);
+//   } else {
+//     console.log(linkString);
+//   }
+// });
