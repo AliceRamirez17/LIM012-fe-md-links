@@ -65,8 +65,8 @@ const verifyExt = () => {
 
 verifyExt();
 
-const pathAbs = path.resolve(filePath);
-console.log(pathAbs);
+// const pathAbs = path.resolve(filePath);
+// console.log(pathAbs);
 
 // // Leer data de un file
 // fs.readlink(pathAbs, (err, linkString) => {
@@ -76,3 +76,11 @@ console.log(pathAbs);
 //     console.log(linkString);
 //   }
 // });
+
+// Directorio actual
+// console.log(`Current directory: ${process.cwd()}`);
+
+fs.readFile(filePath, (err, data) => {
+  if (err) throw err;
+  console.log(data.toString());
+});
