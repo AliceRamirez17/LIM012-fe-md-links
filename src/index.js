@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 const fs = require('fs');
 const path = require('path');
+const marked = require('marked');
 
 // // Enlistar todos los archivos que encuentre en el directorio
 // const allFiles = () => {
@@ -51,6 +52,8 @@ const recursion = (onePath) => {
 
 recursion(dirPath).forEach((file) => {
   console.log(file);
+  const contentFile = fs.readFileSync(file, 'utf-8');
+  console.log(marked(contentFile));
 });
 
 // // Verificar la extensión .md
@@ -79,8 +82,3 @@ recursion(dirPath).forEach((file) => {
 
 // Directorio actual
 // console.log(`Current directory: ${process.cwd()}`);
-
-// fs.readFile(filePath, (err, data) => {
-//   if (err) throw err;
-//   console.log(data.toString());
-// });
