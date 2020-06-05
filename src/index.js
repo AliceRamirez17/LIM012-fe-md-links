@@ -12,14 +12,14 @@ const marked = require('marked');
 
 // allFiles();
 
-const relPath = './carpeta/data.md';
+const relPath = './src/carpeta/data.md';
 
-const dirPath = './carpeta';
-const filePath = './carpeta/data.md';
-const anotherPath = './carpeta/data.txt';
+const dirPath = './src/carpeta';
+const filePath = './src/carpeta/data.md';
+const anotherPath = './src/carpeta/data.txt';
 
 // Encontrar una ruta en específico
-const fileExists = fs.existsSync('./carpeta');
+const fileExists = fs.existsSync('./src/carpeta');
 console.log(fileExists ? 'La ruta existe' : 'La ruta no existe');
 
 // Identificar la ruta
@@ -40,7 +40,7 @@ const recursion = (onePath) => {
     arrFiles.push(onePath);
   } else {
     fs.readdirSync(onePath).forEach((file) => {
-      const arr = ['./carpeta/'];
+      const arr = ['./src/carpeta/'];
       arr.push(file);
       const fileToPath = path.resolve(arr.join(''));
       recursion(fileToPath);
@@ -56,17 +56,17 @@ recursion(dirPath).forEach((file) => {
   console.log(marked(contentFile));
 });
 
-// // Verificar la extensión .md
-// const verifyExt = () => {
-//   const baseName = path.basename(filePath);
-//   if (path.extname(baseName) === '.md') {
-//     console.log('path is a .md file');
-//   } else {
-//     console.log('path is not a .md file');
-//   }
-// };
+// Verificar la extensión .md
+const verifyExt = () => {
+  const baseName = path.basename(filePath);
+  if (path.extname(baseName) === '.md') {
+    console.log('path is a .md file');
+  } else {
+    console.log('path is not a .md file');
+  }
+};
 
-// verifyExt();
+verifyExt();
 
 // const pathAbs = path.resolve(filePath);
 // console.log(pathAbs);
