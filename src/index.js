@@ -13,72 +13,77 @@ const marked = require('marked');
 // allFiles();
 
 const relPath = './src/carpeta/data.md';
+const routeAbs = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\src\\carpeta\\archive.md';
 
 const dirPath = './src/carpeta';
 const filePath = './src/carpeta/data.md';
 const anotherPath = './src/carpeta/data.txt';
 
-// Encontrar una ruta en específico
-const fileExists = fs.existsSync('./src/carpeta');
-console.log(fileExists ? 'La ruta existe' : 'La ruta no existe');
+// Valida la ruta
+const isValidPath = (route) => fs.existsSync(route);
 
-// Identificar la ruta
-const absolute = path.isAbsolute(relPath);
-if (absolute === true) {
-  console.log('la ruta es absoluta');
-} else {
-  // Convertir ruta relativa a absoluta
-  const convertPath = path.resolve(relPath);
-  console.log('Ruta convertida a absoluta', convertPath);
-}
+// Verifica si la ruta es absoluta
+const isAbsolutePath = (route) => path.isAbsolute(route);
+
+// Convierte la ruta a absoluta
+const getAbsolute = (route) => (isAbsolutePath(route) ? route : path.resolve(route));
+
+// Verifica si es un file
+const isFile = (route) => fs.statSync(route).isFile();
+
+// Leer un directorio
+const readDirectory = (route) => fs.readdirSync(route);
+
+// Extensión de un file
+const fileExt = (route) => path.extname(route);
 
 // Función recursiva
-const recursion = (onePath) => {
-  const arrFiles = [];
+const getMdFile = (route) => {
+  let arrFiles = [];
+  const newRoute = getAbsolute(route);
   // caso base
-  if (fs.statSync(onePath).isFile() === true) {
-    arrFiles.push(onePath);
+  if (isFile(newRoute) === true) {
+    if (fileExt(route) === '.md') {
+      arrFiles.push(newRoute);
+    }
   } else {
-    fs.readdirSync(onePath).forEach((file) => {
-      const arr = ['./src/carpeta/'];
-      arr.push(file);
-      const fileToPath = path.resolve(arr.join(''));
-      recursion(fileToPath);
-      arrFiles.push(fileToPath);
+    readDirectory(route).forEach((file) => {
+      const completeRoute = path.join(route, file);
+      const allFiles = getMdFile(completeRoute);
+      arrFiles = arrFiles.concat(allFiles);
     });
   }
   return arrFiles;
 };
 
-recursion(dirPath).forEach((file) => {
-  console.log(file);
-  const contentFile = fs.readFileSync(file, 'utf-8');
-  console.log(marked(contentFile));
-});
+const readFile = (file) => fs.readFileSync(file, 'utf-8');
 
-// Verificar la extensión .md
-const verifyExt = () => {
-  const baseName = path.basename(filePath);
-  if (path.extname(baseName) === '.md') {
-    console.log('path is a .md file');
-  } else {
-    console.log('path is not a .md file');
-  }
+const extractLinks = (route) => {
+  const arrLinks = [];
+  getMdFile(route).forEach((file) => {
+    const renderer = new marked.Renderer();
+    renderer.link = (href, title, text) => {
+      const newObj = {
+        href,
+        text,
+        file,
+      };
+      arrLinks.push(newObj);
+    };
+    marked(readFile(file), { renderer });
+  });
+  return arrLinks;
 };
 
-verifyExt();
+// console.log(extractLinks(dirPath));
 
-// const pathAbs = path.resolve(filePath);
-// console.log(pathAbs);
-
-// // Leer data de un file
-// fs.readlink(pathAbs, (err, linkString) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log(linkString);
-//   }
-// });
-
-// Directorio actual
-// console.log(`Current directory: ${process.cwd()}`);
+module.exports = {
+  isAbsolutePath,
+  getAbsolute,
+  isFile,
+  readDirectory,
+  fileExt,
+  getMdFile,
+  readFile,
+  extractLinks,
+};
