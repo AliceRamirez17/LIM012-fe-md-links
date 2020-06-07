@@ -3,15 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
 
-// // Enlistar todos los archivos que encuentre en el directorio
-// const allFiles = () => {
-//   fs.readdirSync(__dirname).forEach((file) => {
-//     console.log(file);
-//   });
-// };
-
-// allFiles();
-
 const relPath = './src/carpeta/data.md';
 const routeAbs = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\src\\carpeta\\archive.md';
 
