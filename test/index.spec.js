@@ -7,12 +7,12 @@ const {
   getMdFile,
   readFile,
   extractLinks,
-} = require('../src/index.js');
+} = require('../lib/index.js');
 
-const absolutePath = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\src\\carpeta\\archive.md';
-const relativePath = './src/carpeta/archive.md';
-const relPath = './src/carpeta/data.md';
-const dirPath = './src/carpeta/';
+const absolutePath = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\lib\\carpeta\\archive.md';
+const relativePath = './lib/carpeta/archive.md';
+const relPath = './lib/carpeta/data.md';
+const dirPath = './lib/carpeta/';
 
 const arrAllFiles = [
   'archive.md',
@@ -20,8 +20,8 @@ const arrAllFiles = [
   'data.txt',
 ];
 const arrFilesMD = [
-  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\src\\carpeta\\archive.md',
-  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\src\\carpeta\\data.md',
+  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\lib\\carpeta\\archive.md',
+  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\lib\\carpeta\\data.md',
 ];
 
 const infoFile = '# Info\n[Node.js](https://nodejs.org/es/)\n[motor de JavaScript V8 de Chrome](https://developers.google.com/v8/)';
@@ -30,12 +30,12 @@ const arrLinks = [
   {
     href: 'https://nodejs.org/es/',
     text: 'Node.js',
-    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\src\\carpeta\\data.md',
+    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\lib\\carpeta\\data.md',
   },
   {
     href: 'https://developers.google.com/v8/',
     text: 'motor de JavaScript V8 de Chrome',
-    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\src\\carpeta\\data.md',
+    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\lib\\carpeta\\data.md',
   },
 ];
 
