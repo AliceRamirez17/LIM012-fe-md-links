@@ -7,7 +7,7 @@ const {
   getMdFile,
   readFile,
   extractLinks,
-} = require('../lib/index.js');
+} = require('../lib/utils.js');
 
 const absolutePath = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\lib\\carpeta\\archive.md';
 const relativePath = './lib/carpeta/archive.md';
