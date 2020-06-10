@@ -21,7 +21,9 @@
     "email": "alicemarcelaramirez@gmail.com"
   },
   "files": [],
-  "bin": "cli.js",
+  "bin": {
+    "md-links": "cli.js"
+  },
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/AliceRamirez17/LIM012-fe-md-links/issues"
@@ -36,6 +38,7 @@
   "dependencies": {
     "@babel/register": "^7.10.1",
     "axios": "^0.19.2",
+    "chalk": "^4.1.0",
     "eslint-plugin-jest": "^23.13.2",
     "marked": "^1.1.0"
   }
