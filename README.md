@@ -9,7 +9,7 @@
 
 Md-links is a library that parses and finds links in Markdown files.
 
-### Get files
+## Get files
 
 `md-links <path-to-file>`
 
