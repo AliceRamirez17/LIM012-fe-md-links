@@ -22,7 +22,7 @@
   },
   "files": [],
   "bin": {
-    "md-links": "lib/cli.js"
+    "md-links": "./lib/cli.js"
   },
   "license": "ISC",
   "bugs": {
