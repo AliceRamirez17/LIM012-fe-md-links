@@ -2,8 +2,8 @@
 
 ## Flowchart
 
-![API flowchart](img/API-flowchart.jpg)
-![CLI flowchart](img/CLI-flowchart.jpg)
+![API flowchart](./img/API-flowchart.jpg)
+![CLI flowchart](./img/CLI-flowchart.jpg)
 
 ## About
 
