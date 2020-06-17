@@ -9,6 +9,16 @@
 
 Md-links is a library that parses and finds links in Markdown files.
 
+## :pushpin: Installation
+
+`md-links install https://github.com/AliceRamirez17/LIM012-fe-md-links`
+
+### :question: Help
+
+`md-links --help`
+
+![md-links help](./img/md-links_help.jpg)
+
 ## Get files
 
 `md-links <path-to-file>`
