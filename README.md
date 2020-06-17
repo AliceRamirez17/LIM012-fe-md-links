@@ -25,12 +25,7 @@ Md-links is a library that parses and finds links in Markdown files.
 
 For example:
 
-```sh
-$ md-links ./some/example.md
-./some/example.md http://algo.com/2/3/ Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html algún doc
-./some/example.md http://google.com/ Google
-```
+![md-links path](./img/md-links_path.jpg)
 
 #### Options
 
@@ -40,12 +35,7 @@ $ md-links ./some/example.md
 
 For example:
 
-```sh
-$ md-links ./some/example.md --validate
-./some/example.md http://algo.com/2/3/ ok 200 Link a algo
-./some/example.md https://otra-cosa.net/algun-doc.html fail 404 algún doc
-./some/example.md http://google.com/ ok 301 Google
-```
+![md-links validate](./img/md-links_validate.jpg)
 
 ##### `--stats`
 
@@ -53,11 +43,7 @@ $ md-links ./some/example.md --validate
 
 For example:
 
-```sh
-$ md-links ./some/example.md --stats
-Total: 3
-Unique: 3
-```
+![md-links stats](./img/md-links_stats.jpg)
 
 ##### `--stats and --validate`
 
@@ -65,12 +51,7 @@ Unique: 3
 
 For example:
 
-```sh
-$ md-links ./some/example.md --validate --stats
-Total: 3
-Unique: 3
-Broken: 1
-```
+![md-links validate & stats](./img/md-links_validate_stats.jpg)
 
 ## Objetivos de aprendizaje
 
