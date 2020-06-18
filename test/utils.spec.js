@@ -1,3 +1,6 @@
+import mockAxios from '../__mocks__/mockAxios';
+import { TestScheduler } from 'jest';
+
 const {
   isAbsolutePath,
   getAbsolute,
@@ -7,6 +10,7 @@ const {
   getMdFile,
   readFile,
   extractLinks,
+  validateLinks,
 } = require('../lib/utils.js');
 
 const absolutePath = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\archive.md';
@@ -129,5 +133,26 @@ describe('extractLinks', () => {
   });
   it('Devuelve un array con cada link(objeto)', () => {
     expect(extractLinks(relPath)).toEqual(arrLinks);
+  });
+});
+
+// Testing Axios
+describe('petición HTTP con Axios', () => {
+  test('La petición exitosa muestra un objeto', () => {
+    const urlSuccess = 'https://nodejs.org/es/';
+    mockAxios.get.mockImplementation((url) => Promise.resolve({
+      data: {
+        status: 200,
+        statusText: 'OK',
+      },
+    }));
+  });
+  test('La petición errónea muestra un objeto con datos exitosos', () => {
+    mockAxios.get.mockImplementation((url) => Promise.resolve({
+      data: {
+        status: 400,
+        statusText: 'FAIL',
+      },
+    }));
   });
 });
