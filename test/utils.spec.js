@@ -7,7 +7,6 @@ const {
   getMdFile,
   readFile,
   extractLinks,
-  validateLinks,
 } = require('../lib/utils.js');
 
 const absolutePath = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\archive.md';
@@ -25,7 +24,10 @@ const arrFilesMD = [
   'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
 ];
 
-const infoFile = '# Info\n[Node.js](https://nodejs.org/es/)\n[motor de JavaScript V8 de Chrome](https://developers.google.com/v8/)';
+const infoFile = `# Info
+[Node.js](https://nodejs.org/es/)
+[motor de JavaScript V8 de Chrome](https://developers.google.com/v7/)
+[motor de JavaScript V8 de Chrome](https://developers.google.com/v7/)`;
 
 const arrLinks = [
   {
@@ -34,7 +36,12 @@ const arrLinks = [
     file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
   },
   {
-    href: 'https://developers.google.com/v8/',
+    href: 'https://developers.google.com/v7/',
+    text: 'motor de JavaScript V8 de Chrome',
+    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
+  },
+  {
+    href: 'https://developers.google.com/v7/',
     text: 'motor de JavaScript V8 de Chrome',
     file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
   },
