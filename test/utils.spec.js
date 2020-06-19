@@ -1,5 +1,4 @@
 import mockAxios from '../__mocks__/mockAxios';
-import { TestScheduler } from 'jest';
 
 const {
   isAbsolutePath,
@@ -10,8 +9,8 @@ const {
   getMdFile,
   readFile,
   extractLinks,
-  validateLinks,
 } = require('../lib/utils.js');
+
 
 const absolutePath = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\archive.md';
 const relativePath = './test/carpeta/archive.md';
@@ -22,10 +21,12 @@ const arrAllFiles = [
   'archive.md',
   'data.md',
   'data.txt',
+  'oneLink.md',
 ];
 const arrFilesMD = [
   'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\archive.md',
   'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
+  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\oneLink.md',
 ];
 
 const infoFile = `# Info
@@ -138,21 +139,20 @@ describe('extractLinks', () => {
 
 // Testing Axios
 describe('petición HTTP con Axios', () => {
-  test('La petición exitosa muestra un objeto', () => {
-    const urlSuccess = 'https://nodejs.org/es/';
-    mockAxios.get.mockImplementation((url) => Promise.resolve({
-      data: {
+  it('La petición exitosa muestra un objeto', () => {
+    mockAxios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, statusText: 'OK' }));
+
+    const url = 'https://nodejs.org/es/';
+
+    expect(url).toEqual([
+      {
+        href: 'https://nodejs.org/es/',
+        text: 'Node.js',
+        file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
         status: 200,
         statusText: 'OK',
       },
-    }));
-  });
-  test('La petición errónea muestra un objeto con datos exitosos', () => {
-    mockAxios.get.mockImplementation((url) => Promise.resolve({
-      data: {
-        status: 400,
-        statusText: 'FAIL',
-      },
-    }));
+    ]);
+    expect(mockAxios.get).toHaveBeenCalledTimes(1);
   });
 });
