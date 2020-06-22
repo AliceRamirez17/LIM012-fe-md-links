@@ -1,5 +1,8 @@
 # dependencies
-node_modules
+node_modules/
 
 # test
-/coverage
+coverage/
+
+# another
+.vscode/
