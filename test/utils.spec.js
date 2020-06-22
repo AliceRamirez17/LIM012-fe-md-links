@@ -32,11 +32,6 @@ const arrFilesMD = [
   'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\oneLink.md',
 ];
 
-const infoFile = `# Info
-[Node.js](https://nodejs.org/es/)
-[motor de JavaScript V8 de Chrome](https://developers.google.com/v7/)
-[motor de JavaScript V8 de Chrome](https://developers.google.com/v7/)`;
-
 const arrLinks = [
   {
     href: 'https://nodejs.org/es/',
@@ -126,7 +121,7 @@ describe('readFile', () => {
     expect(typeof readFile).toBe('function');
   });
   it('Devuelve un string con la información del file', () => {
-    expect(readFile(relPath)).toEqual(infoFile);
+    expect(readFile(onePath)).toBe('[Node.js](https://nodejs.org/es/)');
   });
 });
 
@@ -144,14 +139,12 @@ describe('extractLinks', () => {
 describe('petición HTTP con Axios', () => {
   it('La petición exitosa muestra un objeto', () => {
     const arr = extractLinks(onePath);
-    const arrVal = mock.get.mockImplementationOnce(() => Promise.resolve({ status: 200, statusText: 'OK' }));
+    mock.get.mockImplementationOnce(() => Promise.resolve({ data: {} }));
     const result = validateLinks(onePath).then(() => [{
       ...arr,
-      status: arrVal.status,
-      statusText: arrVal.statusText,
+      status: 200,
+      statusText: 'OK',
     }]);
-
     expect(validateLinks(onePath)).toEqual(result);
-    expect(mock.get).toHaveBeenCalledTimes(1);
   });
 });
