@@ -1,4 +1,5 @@
-import mockAxios from '../__mocks__/mockAxios';
+// import mockAxios from '../__mocks__/mockAxios';
+const { mock } = require('../__mocks__/mockAxios');
 
 const {
   isAbsolutePath,
@@ -9,6 +10,7 @@ const {
   getMdFile,
   readFile,
   extractLinks,
+  validateLinks,
 } = require('../lib/utils.js');
 
 
@@ -16,6 +18,7 @@ const absolutePath = 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpe
 const relativePath = './test/carpeta/archive.md';
 const relPath = './test/carpeta/data.md';
 const dirPath = './test/carpeta/';
+const onePath = './test/carpeta/oneLink.md';
 
 const arrAllFiles = [
   'archive.md',
@@ -140,19 +143,15 @@ describe('extractLinks', () => {
 // Testing Axios
 describe('petición HTTP con Axios', () => {
   it('La petición exitosa muestra un objeto', () => {
-    mockAxios.get.mockImplementationOnce(() => Promise.resolve({ status: 200, statusText: 'OK' }));
+    const arr = extractLinks(onePath);
+    const arrVal = mock.get.mockImplementationOnce(() => Promise.resolve({ status: 200, statusText: 'OK' }));
+    const result = validateLinks(onePath).then(() => [{
+      ...arr,
+      status: arrVal.status,
+      statusText: arrVal.statusText,
+    }]);
 
-    const url = 'https://nodejs.org/es/';
-
-    expect(url).toEqual([
-      {
-        href: 'https://nodejs.org/es/',
-        text: 'Node.js',
-        file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
-        status: 200,
-        statusText: 'OK',
-      },
-    ]);
-    expect(mockAxios.get).toHaveBeenCalledTimes(1);
+    expect(validateLinks(onePath)).toEqual(result);
+    expect(mock.get).toHaveBeenCalledTimes(1);
   });
 });
