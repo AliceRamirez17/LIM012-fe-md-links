@@ -56,7 +56,7 @@ For example:
 ## Objetivos de aprendizaje
 
 ### Javascript
-- [ ] Uso de callbacks
+- [✓] Uso de callbacks
 - [✓] Consumo de Promesas
 - [✓] Creacion de Promesas
 - [✓] Modulos de Js
@@ -65,9 +65,9 @@ For example:
 ### Node
 - [✓] Sistema de archivos
 - [✓] package.json
-- [ ] crear modules
+- [✓] crear modules
 - [✓] Instalar y usar modules
-- [ ] npm scripts
+- [✓] npm scripts
 - [✓] CLI (Command Line Interface - Interfaz de Línea de Comando)
 
 ### Testing
@@ -83,7 +83,7 @@ For example:
 ### Buenas prácticas de desarrollo
 - [✓] Modularización
 - [✓] Nomenclatura / Semántica
-- [ ] Linting
+- [✓] Linting
 
 ***
 
