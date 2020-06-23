@@ -6,4 +6,4 @@ const mock = {
   get: jest.fn(),
 };
 
-module.exports = { mock };
+module.exports = mock;

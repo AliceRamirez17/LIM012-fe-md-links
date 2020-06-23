@@ -1,5 +1,5 @@
 // import mockAxios from '../__mocks__/mockAxios';
-const { mock } = require('../__mocks__/mockAxios');
+const mock = require('../__mocks__/axios');
 
 const {
   isAbsolutePath,
@@ -136,15 +136,20 @@ describe('extractLinks', () => {
 });
 
 // Testing Axios
-describe('petición HTTP con Axios', () => {
-  it('La petición exitosa muestra un objeto', () => {
-    const arr = extractLinks(onePath);
-    mock.get.mockImplementationOnce(() => Promise.resolve({ data: {} }));
-    const result = validateLinks(onePath).then(() => [{
-      ...arr,
-      status: 200,
-      statusText: 'OK',
-    }]);
-    expect(validateLinks(onePath)).toEqual(result);
+describe.only('petición HTTP con Axios', () => {
+  it('La petición exitosa muestra un objeto', (done) => {
+    mock.get.mockImplementationOnce(() => Promise.resolve({ status: 200, statusText: 'OK' }));
+    validateLinks(onePath).then((response) => {
+      expect(response).toEqual([
+        {
+          href: 'https://nodejs.org/es/',
+          text: 'Node.js',
+          file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\oneLink.md',
+          status: 200,
+          statusText: 'OK',
+        },
+      ]);
+      done();
+    });
   });
 });
