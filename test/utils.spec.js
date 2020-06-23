@@ -136,7 +136,7 @@ describe('extractLinks', () => {
 });
 
 // Testing Axios
-describe.only('petición HTTP con Axios', () => {
+describe('petición HTTP de Axios con respuesta positiva', () => {
   it('La petición exitosa muestra un objeto', (done) => {
     mock.get.mockImplementationOnce(() => Promise.resolve({ status: 200, statusText: 'OK' }));
     validateLinks(onePath).then((response) => {
