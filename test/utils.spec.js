@@ -157,7 +157,7 @@ describe('petición HTTP de Axios con respuesta positiva', () => {
   });
   it('La petición devuelve un objeto con error', (done) => {
     mock.get.mockImplementationOnce(() => Promise.resolve({ status: 400, statusText: 'FAIL' }));
-    validateLinks(errPath).catch((response) => {
+    validateLinks(errPath).then((response) => {
       expect(response).toEqual([
         {
           href: 'https://developers.google.com/v7/',
@@ -169,5 +169,5 @@ describe('petición HTTP de Axios con respuesta positiva', () => {
       ]);
       done();
     });
-  }, 30000);
+  });
 });
