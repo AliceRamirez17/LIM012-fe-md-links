@@ -91,7 +91,7 @@ For example:
 
 ### Testing
 - [x] Testeo de tus funciones
-- [ ] Testeo asíncrono
+- [x] Testeo asíncrono
 - [ ] Uso de librerias de Mock
 - [x] Mocks manuales
 - [ ] Testeo para multiples Sistemas Operativos
