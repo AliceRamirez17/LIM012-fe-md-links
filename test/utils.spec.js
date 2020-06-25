@@ -19,16 +19,19 @@ const relativePath = './test/carpeta/archive.md';
 const relPath = './test/carpeta/data.md';
 const dirPath = './test/carpeta/';
 const onePath = './test/carpeta/oneLink.md';
+const errPath = './test/carpeta/errorLink.md';
 
 const arrAllFiles = [
   'archive.md',
   'data.md',
   'data.txt',
+  'errorLink.md',
   'oneLink.md',
 ];
 const arrFilesMD = [
   'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\archive.md',
   'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
+  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\errorLink.md',
   'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\oneLink.md',
 ];
 
@@ -137,7 +140,7 @@ describe('extractLinks', () => {
 
 // Testing Axios
 describe('petición HTTP de Axios con respuesta positiva', () => {
-  it('La petición exitosa muestra un objeto', (done) => {
+  it('La petición devuelve un objeto sin error', (done) => {
     mock.get.mockImplementationOnce(() => Promise.resolve({ status: 200, statusText: 'OK' }));
     validateLinks(onePath).then((response) => {
       expect(response).toEqual([
@@ -152,4 +155,19 @@ describe('petición HTTP de Axios con respuesta positiva', () => {
       done();
     });
   });
+  it('La petición devuelve un objeto con error', (done) => {
+    mock.get.mockImplementationOnce(() => Promise.resolve({ status: 400, statusText: 'FAIL' }));
+    validateLinks(errPath).catch((response) => {
+      expect(response).toEqual([
+        {
+          href: 'https://developers.google.com/v7/',
+          text: 'motor de JavaScript V8 de Chrome',
+          file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\errorLink.md',
+          status: 400,
+          statusText: 'FAIL',
+        },
+      ]);
+      done();
+    });
+  }, 30000);
 });
