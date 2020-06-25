@@ -1,4 +1,4 @@
-const { mdLinks } = require('../lib/mdLinks.js');
+const mdLinks = require('../lib/mdLinks.js');
 const mock = require('../__mocks__/axios');
 
 const relPath = './test/carpeta/data.md';

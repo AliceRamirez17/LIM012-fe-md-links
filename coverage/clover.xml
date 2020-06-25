@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1593068727855" clover="3.2.0">
-  <project timestamp="1593068727855" name="All files">
-    <metrics statements="54" coveredstatements="53" conditionals="10" coveredconditionals="10" methods="18" coveredmethods="17" elements="82" coveredelements="80" complexity="0" loc="54" ncloc="54" packages="1" files="2" classes="2"/>
+<coverage generated="1593104505982" clover="3.2.0">
+  <project timestamp="1593104505982" name="All files">
+    <metrics statements="54" coveredstatements="54" conditionals="10" coveredconditionals="10" methods="18" coveredmethods="18" elements="82" coveredelements="82" complexity="0" loc="54" ncloc="54" packages="1" files="2" classes="2"/>
     <file name="mdLinks.js" path="C:\Users\gato_\Desktop\LIM012-fe-md-links\lib\mdLinks.js">
       <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
       <line num="5" count="1" type="stmt"/>
@@ -19,7 +19,7 @@
       <line num="24" count="1" type="stmt"/>
     </file>
     <file name="utils.js" path="C:\Users\gato_\Desktop\LIM012-fe-md-links\lib\utils.js">
-      <metrics statements="41" coveredstatements="40" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="15"/>
+      <metrics statements="41" coveredstatements="41" conditionals="6" coveredconditionals="6" methods="16" coveredmethods="16"/>
       <line num="1" count="2" type="stmt"/>
       <line num="2" count="2" type="stmt"/>
       <line num="3" count="2" type="stmt"/>
@@ -56,9 +56,9 @@
       <line num="66" count="3" type="stmt"/>
       <line num="68" count="3" type="stmt"/>
       <line num="69" count="3" type="stmt"/>
-      <line num="71" count="3" type="stmt"/>
-      <line num="76" count="3" type="stmt"/>
-      <line num="78" count="0" type="stmt"/>
+      <line num="71" count="2" type="stmt"/>
+      <line num="76" count="2" type="stmt"/>
+      <line num="78" count="1" type="stmt"/>
       <line num="84" count="3" type="stmt"/>
       <line num="87" count="2" type="stmt"/>
     </file>

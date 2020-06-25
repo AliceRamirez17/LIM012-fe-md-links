@@ -1,4 +1,6 @@
 // import mockAxios from '../__mocks__/mockAxios';
+const path = require('path');
+
 const mock = require('../__mocks__/axios');
 
 const {
@@ -29,27 +31,27 @@ const arrAllFiles = [
   'oneLink.md',
 ];
 const arrFilesMD = [
-  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\archive.md',
-  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
-  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\errorLink.md',
-  'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\oneLink.md',
+  path.resolve('./test/carpeta/archive.md'),
+  path.resolve('./test/carpeta/data.md'),
+  path.resolve('./test/carpeta/errorLink.md'),
+  path.resolve('./test/carpeta/oneLink.md'),
 ];
 
 const arrLinks = [
   {
     href: 'https://nodejs.org/es/',
     text: 'Node.js',
-    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
+    file: path.resolve('./test/carpeta/data.md'),
   },
   {
     href: 'https://developers.google.com/v7/',
     text: 'motor de JavaScript V8 de Chrome',
-    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
+    file: path.resolve('./test/carpeta/data.md'),
   },
   {
     href: 'https://developers.google.com/v7/',
     text: 'motor de JavaScript V8 de Chrome',
-    file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\data.md',
+    file: path.resolve('./test/carpeta/data.md'),
   },
 ];
 
@@ -147,7 +149,7 @@ describe('petición HTTP de Axios con respuesta positiva', () => {
         {
           href: 'https://nodejs.org/es/',
           text: 'Node.js',
-          file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\oneLink.md',
+          file: path.resolve('./test/carpeta/oneLink.md'),
           status: 200,
           statusText: 'OK',
         },
@@ -156,13 +158,13 @@ describe('petición HTTP de Axios con respuesta positiva', () => {
     });
   });
   it('La petición devuelve un objeto con error', (done) => {
-    mock.get.mockImplementationOnce(() => Promise.resolve({ status: 400, statusText: 'FAIL' }));
+    mock.get.mockImplementationOnce(() => Promise.reject(new Error('err')));
     validateLinks(errPath).then((response) => {
       expect(response).toEqual([
         {
           href: 'https://developers.google.com/v7/',
           text: 'motor de JavaScript V8 de Chrome',
-          file: 'C:\\Users\\gato_\\Desktop\\LIM012-fe-md-links\\test\\carpeta\\errorLink.md',
+          file: path.resolve('./test/carpeta/errorLink.md'),
           status: 400,
           statusText: 'FAIL',
         },
