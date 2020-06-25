@@ -53,6 +53,25 @@ For example:
 
 ![md-links validate & stats](./img/md-links_validate_stats.jpg)
 
+## Boilerplate
+
+```text
+.
+├── README.md
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── lib
+|  ├── utils.js
+|  ├── mdLinks.js
+|  ├── stats.js
+|  ├── cliOptions.js
+|  └── cli.js
+└── test
+   ├── utils.spec.js
+   └── mdLinks.spec.js
+```
+
 ## Objetivos de aprendizaje
 
 ### Javascript
