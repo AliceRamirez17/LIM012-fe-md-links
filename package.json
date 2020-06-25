@@ -2,7 +2,7 @@
   "name": "md-links",
   "version": "1.0.0",
   "description": "Librería que analiza y encuentra links en archivos Markdown",
-  "main": "index.js",
+  "main": "./lib/mdLinks.js",
   "scripts": {
     "start": "node ./lib/mdLinks.js",
     "test": "jest --coverage"
